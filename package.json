@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "今天也没废 - 生活记录与自我激励应用",
   "main": "index.tsx",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "start": "vite",
     "build": "vite build",
