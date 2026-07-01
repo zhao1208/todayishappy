@@ -24,8 +24,12 @@ const AdminConfigPage: React.FC = () => {
   }, [updateConfig]);
 
   const handleTest = useCallback(async () => {
+    if (!config.enabled) {
+      Toast.show({ content: '请先打开右上角「启用真实 AI 回复」开关', position: 'center' });
+      return;
+    }
     if (!isValid) {
-      Toast.show({ content: '请先填写完整的 API 信息', position: 'center' });
+      Toast.show({ content: '请填写完整的 API 信息（Base URL / API Key / 模型名称）', position: 'center' });
       return;
     }
     setTestLoading(true);
