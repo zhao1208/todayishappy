@@ -1,0 +1,55 @@
+:root {
+  /* 公文风 */
+  --official-bg: #F5F0E8;
+  --official-text: #2C2C2C;
+  --official-border: #8B7B6B;
+  --official-stamp: #C41E3A;
+
+  /* 诊断书风 */
+  --diagnosis-bg: #FFFFFF;
+  --diagnosis-text: #2C3E50;
+  --diagnosis-table-line: #B0C4DE;
+  --diagnosis-alert: #E74C3C;
+
+  /* 游戏风 */
+  --game-bg: #1A1A2E;
+  --game-text: #E0E0E0;
+  --game-highlight: #00D2FF;
+  --game-accent: #FF6B9D;
+  --game-bar-bg: #2D2D44;
+
+  /* 通用 */
+  --app-bg: #F7F7F8;
+  --text-primary: #1A1A1A;
+  --text-secondary: #666666;
+  --text-hint: #999999;
+  --brand-color: #FF6B6B;
+  --brand-light: #FFE8E8;
+
+  /* 间距 */
+  --page-padding: 16px;
+  --card-radius: 16px;
+
+  /* 字体 */
+  --font-serif: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-sans: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--app-bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* TabBar 修正 */
+.adm-tab-bar {
+  border-top: 1px solid #f0f0f0;
+}

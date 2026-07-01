@@ -1,0 +1,25 @@
+{
+  "name": "today-not-wasted",
+  "version": "1.0.0",
+  "description": "今天也没废 - 生活记录与自我激励应用",
+  "main": "index.tsx",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "antd-mobile": "^5.32.0",
+    "antd-mobile-icons": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
+  }
+}

@@ -1,0 +1,70 @@
+/* 选中状态卡片动效 300ms */
+@keyframes statusSelected {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1.03); }
+}
+
+.status-card-selected {
+  animation: statusSelected 300ms ease-out forwards;
+}
+
+/* 许可证卡片升起动效 500ms */
+@keyframes cardRise {
+  0% { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.card-rise {
+  animation: cardRise 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 印章盖下动效 400ms */
+@keyframes stampDown {
+  0% { transform: translateY(-60px) scale(1.5); opacity: 0; }
+  60% { transform: translateY(5px) scale(0.95); opacity: 1; }
+  80% { transform: translateY(-3px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.stamp-down {
+  animation: stampDown 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 卡片风格切换 300ms */
+@keyframes cardFlip {
+  0% { transform: rotateY(0); }
+  50% { transform: rotateY(90deg); }
+  100% { transform: rotateY(0); }
+}
+
+.card-flip {
+  animation: cardFlip 300ms ease-in-out;
+}
+
+/* 按钮点击反馈 */
+@keyframes buttonTap {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.button-tap {
+  animation: buttonTap 200ms ease;
+}
+
+/* 淡入 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 300ms ease-in-out;
+}
+
+/* AI 正在输入 - 跳动圆点 */
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}

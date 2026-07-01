@@ -1,0 +1,18 @@
+{
+  "name": "今天也没废",
+  "app_id": "today_not_wasted",
+  "version": "1.0.0",
+  "description": "记录生活点滴，发现日常美好",
+  "icon": "./assets/icon.png",
+  "pages": [
+    {
+      "name": "home",
+      "path": "/",
+      "title": "首页"
+    }
+  ],
+  "window": {
+    "backgroundColor": "#F5F5F5",
+    "navigationBarTitleText": "今天也没废"
+  }
+}
