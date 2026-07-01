@@ -36,7 +36,7 @@ const STYLE_LABELS: Record<string, string> = {
 
 const ProfilePage: React.FC = () => {
   const navigate = useNavigate();
-  const { profile, setNickname, logout } = useUserStore();
+  const { profile, session, isAdmin, setNickname, logout } = useUserStore();
   const { history } = useCardStore();
   const { myInteractions } = useCommunityStore();
 
@@ -185,8 +185,8 @@ const ProfilePage: React.FC = () => {
             </p>
           </div>
 
-          {/* 模式标签 */}
-          <div style={{ marginBottom: 20 }}>
+          {/* 角色 + 模式标签 */}
+          <div style={{ marginBottom: 20, display: 'flex', gap: 8, justifyContent: 'center' }}>
             <Tag
               color="#FF6B6B"
               fill="outline"
@@ -198,6 +198,32 @@ const ProfilePage: React.FC = () => {
               } as React.CSSProperties}
             >
               {modeLabel}
+            </Tag>
+            {isAdmin && (
+              <Tag
+                color="#FAAD14"
+                fill="outline"
+                style={{
+                  '--border-radius': '8px',
+                  fontSize: 12,
+                  padding: '0 8px',
+                  lineHeight: '20px',
+                } as React.CSSProperties}
+              >
+                管理员
+              </Tag>
+            )}
+            <Tag
+              color="#999"
+              fill="outline"
+              style={{
+                '--border-radius': '8px',
+                fontSize: 12,
+                padding: '0 8px',
+                lineHeight: '20px',
+              } as React.CSSProperties}
+            >
+              @{session?.username || 'user'}
             </Tag>
           </div>
 
@@ -267,17 +293,35 @@ const ProfilePage: React.FC = () => {
             >
               社区互动记录
             </List.Item>
-            <List.Item
-              arrow={<RightOutline />}
-              onClick={() => navigate('/admin/config')}
-            >
-              AI 配置
-            </List.Item>
+            {isAdmin && (
+              <List.Item
+                arrow={<RightOutline />}
+                onClick={() => navigate('/admin/config')}
+              >
+                AI 配置
+              </List.Item>
+            )}
             <List.Item
               arrow={<RightOutline />}
               onClick={() => setShowAbout(true)}
             >
               关于
+            </List.Item>
+            <List.Item
+              arrow
+              onClick={() => {
+                Dialog.confirm({
+                  content: '确定要退出登录吗？',
+                  confirmText: '退出',
+                  cancelText: '取消',
+                  onConfirm: () => {
+                    logout();
+                    navigate('/login', { replace: true });
+                  },
+                });
+              }}
+            >
+              <span style={{ color: '#FF4D4F' }}>退出登录</span>
             </List.Item>
           </List>
         </div>

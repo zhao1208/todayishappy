@@ -9,8 +9,12 @@ const CommunityPage = lazy(() => import('../pages/CommunityPage'));
 const FriendVerifyPage = lazy(() => import('../pages/FriendVerifyPage'));
 const ProfilePage = lazy(() => import('../pages/ProfilePage'));
 const AdminConfigPage = lazy(() => import('../pages/AdminConfigPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 
 export const routes: RouteObject[] = [
+  { path: '/login', element: <Suspense fallback={<div>加载中...</div>}><LoginPage /></Suspense> },
+  { path: '/register', element: <Suspense fallback={<div>加载中...</div>}><RegisterPage /></Suspense> },
   { path: '/onboarding', element: <Suspense fallback={<div>加载中...</div>}><OnboardingPage /></Suspense> },
   { path: '/', element: <Suspense fallback={<div>加载中...</div>}><HomePage /></Suspense> },
   { path: '/card/generate', element: <Suspense fallback={<div>加载中...</div>}><CardGeneratorPage /></Suspense> },

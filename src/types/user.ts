@@ -1,6 +1,7 @@
 import type { CardStyle } from './card';
 
 export type UserMode = 'student' | 'worker';
+export type UserRole = 'admin' | 'user';
 
 export interface UserProfile {
   id: string;
@@ -8,4 +9,5 @@ export interface UserProfile {
   mode: UserMode;
   createdAt: string;
   preferredCardStyle: CardStyle;
+  role: UserRole;
 }
