@@ -8,18 +8,17 @@ interface CertificateCanvasProps {
 }
 
 const CertificateCanvas: React.FC<CertificateCanvasProps> = ({ cardData, canvasRef: forwardedRef }) => {
-  const { canvasRef: internalRef } = useCardRenderer(cardData);
-
-  const canvasRef = forwardedRef || internalRef;
+  const { canvasRef } = useCardRenderer(cardData, forwardedRef);
 
   return (
     <canvas
-      ref={canvasRef as React.RefObject<HTMLCanvasElement>}
+      ref={canvasRef}
       style={{
         display: 'block',
         width: 375,
         height: 500,
         borderRadius: 8,
+        backgroundColor: '#F5F0E8',
       }}
     />
   );
