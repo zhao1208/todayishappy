@@ -35,3 +35,10 @@ lerna-debug.log*
 .cache
 .temp
 .eslintcache
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
