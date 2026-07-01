@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { createHashRouter, RouterProvider, useNavigate, useLocation } from 'react-router-dom';
-import { routes } from './router';
+import { createHashRouter, RouterProvider, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { UserProvider, useUserStore } from './store/UserContext';
 import { CardProvider } from './store/CardContext';
 import { CommunityProvider } from './store/CommunityContext';
 import './styles/global.css';
 import './styles/animations.css';
 
-function RouteGuard({ children }: { children: React.ReactNode }) {
+/* RouteGuard must be INSIDE RouterProvider — render nothing, just redirect */
+function RouteGuard() {
   const navigate = useNavigate();
   const location = useLocation();
   const { isLoggedIn, isAdmin, hasSelectedMode, isLoading } = useUserStore();
@@ -41,27 +41,26 @@ function RouteGuard({ children }: { children: React.ReactNode }) {
       navigate('/', { replace: true });
       return;
     }
-  }, [isLoggedIn, isAdmin, isLoading, location.pathname, navigate]);
+  }, [isLoggedIn, isAdmin, hasSelectedMode, isLoading, location.pathname, navigate]);
 
-  return <>{children}</>;
+  return <Outlet />;
 }
 
-function AppContent() {
-  const router = createHashRouter(routes);
+import { routes } from './router';
 
-  return (
-    <RouteGuard>
-      <RouterProvider router={router} />
-    </RouteGuard>
-  );
-}
+const router = createHashRouter([
+  {
+    element: <RouteGuard />,
+    children: routes,
+  },
+]);
 
 const App: React.FC = () => {
   return (
     <UserProvider>
       <CardProvider>
         <CommunityProvider>
-          <AppContent />
+          <RouterProvider router={router} />
         </CommunityProvider>
       </CardProvider>
     </UserProvider>
