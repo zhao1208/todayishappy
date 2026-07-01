@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useCallback, ReactNode } from 'react';
 import type { CardData } from '../types/card';
 
 interface CardState {
@@ -73,18 +73,18 @@ export function CardProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const setCurrentCard = (card: CardData) => {
+  const setCurrentCard = useCallback((card: CardData) => {
     dispatch({ type: 'SET_CURRENT_CARD', payload: card });
-  };
-  const updateCurrentCard = (updates: Partial<CardData>) => {
+  }, []);
+  const updateCurrentCard = useCallback((updates: Partial<CardData>) => {
     dispatch({ type: 'UPDATE_CURRENT_CARD', payload: updates });
-  };
-  const addToHistory = (card: CardData) => {
+  }, []);
+  const addToHistory = useCallback((card: CardData) => {
     dispatch({ type: 'ADD_TO_HISTORY', payload: card });
-  };
-  const clearCurrent = () => {
+  }, []);
+  const clearCurrent = useCallback(() => {
     dispatch({ type: 'CLEAR_CURRENT' });
-  };
+  }, []);
 
   return (
     <CardContext.Provider value={{ ...state, dispatch, setCurrentCard, updateCurrentCard, addToHistory, clearCurrent }}>
